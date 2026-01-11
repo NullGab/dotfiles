@@ -1,8 +1,8 @@
 return {
-  "folke/tokyonight.nvim",
-  lazy = false,
-  priority = 1000,
-  opts = {},
-	
-  'xiyaowong/transparent.nvim'
+  {"rebelot/kanagawa.nvim",
+  name = "kanagawa-dragon",
+  config = function()
+    vim.cmd("colorscheme kanagawa-dragon")
+  end},
+  {'xiyaowong/transparent.nvim'}
 }

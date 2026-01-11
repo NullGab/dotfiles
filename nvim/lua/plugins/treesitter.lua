@@ -8,7 +8,8 @@ return {
     require("nvim-treesitter.configs").setup {
       ensure_installed = {
         "c", "cpp", "lua", "markdown", "markdown_inline",
-        "python", "rust", "javascript", "vim", "vimdoc", "zig"
+        "python", "rust", "javascript", "vim", "vimdoc", "zig",
+        "php", "html", "css", "go"
       },
       auto_install = true,
       sync_install = false,
