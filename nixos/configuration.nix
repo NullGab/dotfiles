@@ -50,7 +50,10 @@ nixpkgs.config.allowUnfree = true;
 
  services.xserver = {
 	 enable = true;
-	 displayManager.lightdm.enable = true;
+   displayManager.lightdm = {
+     enable = true;
+     background = ./yotsubato.jpeg; 
+   };
 	 desktopManager.cinnamon.enable = true;
  };
 
