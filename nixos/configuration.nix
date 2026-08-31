@@ -47,6 +47,11 @@
 # =========================================
 # Hardware & Peripherals
 # =========================================
+
+  hardware.graphics = {
+    enable = true;
+    enable32Bit = true;
+  };
   services.libinput.enable = true; # Mouse & Touchpad support
 
     services.keyd = {
@@ -63,6 +68,7 @@
         };
       };
     };
+
 
 # =========================================
 # Audio (PipeWire)
