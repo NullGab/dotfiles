@@ -100,6 +100,8 @@
       flatpak
       zsh
       oh-my-zsh
+      heroic
+      obsidian
   ];
 
   fonts.packages = with pkgs; [
