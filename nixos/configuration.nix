@@ -34,6 +34,7 @@
   services.xserver = {
     enable = true;
     desktopManager.cinnamon.enable = true;
+    videoDrivers = [ "amdgpu" ];
     displayManager.lightdm = {
       enable = true;
       background = ./yotsubato.jpeg; 
