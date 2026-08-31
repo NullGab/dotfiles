@@ -32,6 +32,15 @@ nixpkgs.config.allowUnfree = true;
     remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
     dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
   };
+
+  # Enable Flatpak and Flathub integration
+  services.flatpak.enable = true;
+
+  # Define your declarative Flatpaks
+  services.flatpak.packages = [
+    "com.obsproject.Studio"
+    "org.vinegarhq.Sober"
+  ];
   # Select internationalisation properties.
  i18n.defaultLocale = "en_US.UTF-8";
  console = {

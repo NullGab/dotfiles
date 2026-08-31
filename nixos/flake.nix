@@ -1,46 +1,39 @@
 {
   description = "Gabriel's NixOS Flake Configuration";
 
-inputs = {
-    # Change this to nixos-unstable
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+  inputs = {
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable"; # or your current branch
 
-    home-manager = {
-      # Change this to master to match the unstable packages
-      url = "github:nix-community/home-manager/master";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+      home-manager = {
+        url = "github:nix-community/home-manager/master";
+        inputs.nixpkgs.follows = "nixpkgs";
+      };
+
+# 1. Add the nix-flatpak input
+    nix-flatpak.url = "github:gmodena/nix-flatpak"; 
   };
-  outputs = { self, nixpkgs, home-manager, ... }@inputs: {
+
+  outputs = { self, nixpkgs, home-manager, nix-flatpak, ... }@inputs: {
     nixosConfigurations = {
-      # Changed to 'nixos' to match networking.hostName
       nixos = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
-        
-        # Pass inputs down to modules
         specialArgs = { inherit inputs; };
 
         modules = [
-          # Your standard system configuration files
           ./hardware-configuration.nix
-          ./configuration.nix
+            ./configuration.nix
 
-          # The Home Manager NixOS module
-          home-manager.nixosModules.home-manager
-          {
-            # Tell Home Manager to use the system-level Nixpkgs
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            
-            # This line automatically backs up conflicting files (like your old .zshrc)
-            home-manager.backupFileExtension = "backup";
-            
-            # Link your user to the home.nix file
-            home-manager.users.gabriel = import ./home.nix;
+# 2. Add the flatpak module to your system
+            nix-flatpak.nixosModules.nix-flatpak
 
-            # Pass the flake inputs to home.nix just in case you need them there
-            home-manager.extraSpecialArgs = { inherit inputs; };
-          }
+            home-manager.nixosModules.home-manager
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.backupFileExtension = "backup";
+              home-manager.users.gabriel = import ./home.nix;
+              home-manager.extraSpecialArgs = { inherit inputs; };
+            }
         ];
       };
     };
