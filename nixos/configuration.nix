@@ -25,6 +25,11 @@
 # Enable Zsh system-wide
 programs.zsh.enable = true;
 nixpkgs.config.allowUnfree = true;
+fonts.packages = with pkgs; [
+  nerd-fonts.jetbrains-mono
+    nerd-fonts.meslo-lg
+];
+
 
   # Enable the Steam module
   programs.steam = {

@@ -53,19 +53,22 @@
 
   # Let Home Manager manage itself
   programs.home-manager.enable = true;
-  programs.zsh = {
-  enable = true;
-  enableCompletion = true;
-  syntaxHighlighting.enable = true;
 
-  oh-my-zsh = {
+  programs.zsh = {
     enable = true;
-    theme = "robbyrussell"; # Or "agnoster", "bira", etc.
-    plugins = [
-      "git"
-      "sudo"
-      "npm"
-    ];
+    enableCompletion = true;
+    syntaxHighlighting.enable = true;
+    autosuggestion.enable = true;
+
+    oh-my-zsh = {
+      enable = true;
+      theme = "agnoster"; 
+      plugins = [
+        "git"
+          "sudo"
+          "npm"
+      ];
+    };
   };
 
   # Optional: You can still add standard shell aliases here
@@ -73,5 +76,4 @@
   #   ll = "ls -l";
   #   update = "sudo nixos-rebuild switch --flake ~/dotfiles/#nixos";
   # };
-};
 }
