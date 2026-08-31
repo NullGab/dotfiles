@@ -62,13 +62,17 @@
 
     oh-my-zsh = {
       enable = true;
-      theme = "agnoster"; 
       plugins = [
         "git"
           "sudo"
           "npm"
       ];
     };
+  };
+
+  programs.starship = {
+    enable = true;
+    enableZshIntegration = true;
   };
 
   # Optional: You can still add standard shell aliases here
