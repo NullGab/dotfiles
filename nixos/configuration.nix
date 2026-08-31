@@ -102,6 +102,10 @@
       oh-my-zsh
       heroic
       obsidian
+      mysql-workbench
+      postgresql
+      python3
+      spark
   ];
 
   fonts.packages = with pkgs; [
