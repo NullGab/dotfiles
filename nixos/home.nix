@@ -17,8 +17,9 @@
     curl
     discord
     xclip
+    jre
+  
 
-    # Your custom automation script
     (pkgs.writeShellScriptBin "sys-update" ''
       # Navigate to the root of your dotfiles repository
       cd ~/dotfiles
@@ -41,6 +42,15 @@
       fi
     '')
   ];
+
+  
+  xdg.desktopEntries.vosviewer = {
+    name = "VOSviewer";
+    genericName = "Bibliometric Network Viewer";
+    exec = "java -jar /home/gabriel/VOSviewer/VOSviewer.jar";
+    terminal = false;
+    categories = [ "Science" "Education" ];
+  };
   xdg.configFile."nvim".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/nvim";
   xdg.configFile."kitty".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/kitty";
   gtk = {
