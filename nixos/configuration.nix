@@ -106,6 +106,7 @@
       postgresql
       python3
       spark
+      wine
   ];
 
   fonts.packages = with pkgs; [
