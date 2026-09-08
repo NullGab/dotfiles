@@ -10,6 +10,7 @@
 # =========================================
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
+  boot.kernelPackages = pkgs.linuxPackages_zen;
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
   system.stateVersion = "26.05";
@@ -48,7 +49,7 @@
 # =========================================
 # Hardware & Peripherals
 # =========================================
-
+  powerManagement.cpuFreqGovernor = "performance";
   hardware.graphics = {
     enable = true;
     enable32Bit = true;
@@ -118,6 +119,7 @@
 # =========================================
 # Programs & Services Configs
 # =========================================
+  programs.gamemode.enable = true;
   programs = {
     zsh.enable = true;
     firefox.enable = true;
