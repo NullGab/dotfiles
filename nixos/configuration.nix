@@ -108,6 +108,7 @@
       python3
       spark
       wine
+      easyeffects
   ];
 
   fonts.packages = with pkgs; [
