@@ -75,7 +75,7 @@
 # =========================================
 # Audio (PipeWire)
 # =========================================
-  hardware.pulseaudio.enable = false;
+  services.pulseaudio.enable = false;
   security.rtkit.enable = true; 
   services.pipewire = {
     enable = true;
@@ -103,12 +103,12 @@
       oh-my-zsh
       heroic
       obsidian
-      mysql-workbench
       postgresql
       python3
       spark
       wine
       easyeffects
+      dbeaver-bin
   ];
 
   fonts.packages = with pkgs; [
