@@ -109,6 +109,10 @@
       wine
       easyeffects
       dbeaver-bin
+      whisper-cpp
+      alsa-utils
+      libnotify
+      xdotool
   ];
 
   fonts.packages = with pkgs; [
