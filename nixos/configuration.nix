@@ -113,7 +113,6 @@
       alsa-utils
       libnotify
       xdotool
-      youtube-music
   ];
 
   fonts.packages = with pkgs; [
