@@ -16,6 +16,7 @@
     discord
     xclip
     jre
+    ytmdesktop
     (writeShellScriptBin "dictate" ''
      PID_FILE="/tmp/dictation.pid"
      AUDIO_FILE="/tmp/dictation.wav"
