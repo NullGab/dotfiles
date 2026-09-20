@@ -11,7 +11,7 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.kernelPackages = pkgs.linuxPackages_zen;
-
+  boot.kernelModules = [ "uinput" ];
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
   system.stateVersion = "26.05";
 
@@ -124,6 +124,9 @@
 # =========================================
 # Programs & Services Configs
 # =========================================
+  services.udev.extraRules = ''
+    KERNEL=="uinput", GROUP="input", MODE="0660", OPTIONS+="static_node=uinput"
+    '';
   programs.gamemode.enable = true;
   programs = {
     zsh.enable = true;
@@ -151,7 +154,7 @@
   users.users.gabriel = {
     isNormalUser = true;
     description = "Gabriel";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "input" ];
     shell = pkgs.zsh; 
     packages = with pkgs; [];
   };
