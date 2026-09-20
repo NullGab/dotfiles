@@ -4,10 +4,8 @@
   home.username = "gabriel";
   home.homeDirectory = "/home/gabriel";
 
-  # This should generally match your NixOS version
   home.stateVersion = "24.05"; 
 
-  # Install user-level packages (like your IEM audio tools or Neovim dependencies)
   home.packages = with pkgs; [
     htop
     ripgrep
@@ -18,7 +16,32 @@
     discord
     xclip
     jre
-  
+    (writeShellScriptBin "dictate" ''
+     PID_FILE="/tmp/dictation.pid"
+     AUDIO_FILE="/tmp/dictation.wav"
+     MODEL_PATH="$HOME/models/ggml-large-v3-turbo.bin"
+
+     if [ -f "$PID_FILE" ]; then
+     kill -9 $(cat "$PID_FILE")
+     rm "$PID_FILE"
+
+     ${pkgs.libnotify}/bin/notify-send -t 2000 "Dictation" "Processing Turbo model..."
+
+     TEXT=$(${pkgs.whisper-cpp}/bin/whisper-cpp -m "$MODEL_PATH" -f "$AUDIO_FILE" -nt 2>/dev/null | sed 's/^[ \t]*//' | tr -d '\n')
+
+     if [ -n "$TEXT" ]; then
+     ${pkgs.wtype}/bin/wtype "$TEXT "
+     ${pkgs.libnotify}/bin/notify-send -t 2000 "Dictation" "Text inserted!"
+     else
+     ${pkgs.libnotify}/bin/notify-send -t 2000 "Dictation" "No speech detected."
+     fi
+     else
+     ${pkgs.libnotify}/bin/notify-send -t 2000 "Dictation" "Recording... Press hotkey again to stop."
+       ${pkgs.alsa-utils}/bin/arecord -f S16_LE -c 1 -r 16000 "$AUDIO_FILE" &
+       echo $! > "$PID_FILE"
+       fi
+       '')
+
 
     (pkgs.writeShellScriptBin "sys-update" ''
       # Navigate to the root of your dotfiles repository
