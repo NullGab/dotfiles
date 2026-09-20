@@ -30,7 +30,7 @@
      TEXT=$(${pkgs.whisper-cpp}/bin/whisper-cpp -m "$MODEL_PATH" -f "$AUDIO_FILE" -nt 2>/dev/null | sed 's/^[ \t]*//' | tr -d '\n')
 
      if [ -n "$TEXT" ]; then
-     ${pkgs.wtype}/bin/wtype "$TEXT "
+     ${pkgs.dotool}/bin/xdotool "$TEXT "
      ${pkgs.libnotify}/bin/notify-send -t 2000 "Dictation" "Text inserted!"
      else
      ${pkgs.libnotify}/bin/notify-send -t 2000 "Dictation" "No speech detected."
