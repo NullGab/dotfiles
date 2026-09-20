@@ -23,28 +23,26 @@
      LOG_FILE="/tmp/whisper.log"
 
      if [ -f "$PID_FILE" ]; then
-# FIX 1: Graceful termination so arecord finalizes the WAV header
      kill $(cat "$PID_FILE")
      rm "$PID_FILE"
 
      ${pkgs.libnotify}/bin/notify-send -t 2000 "Dictation" "Processing Turbo model..."
 
-# FIX 2: Correct binary name for newer whisper.cpp (whisper-cli)
-# FIX 3: Redirect stderr to a log file instead of /dev/null for debugging
      TEXT=$(${pkgs.whisper-cpp}/bin/whisper-cli -m "$MODEL_PATH" -f "$AUDIO_FILE" -nt 2>>"$LOG_FILE" | sed 's/^[ \t]*//' | tr -d '\n')
 
      if [ -n "$TEXT" ]; then
-     ${pkgs.wtype}/bin/wtype "$TEXT "
+# Use xdotool to type the transcribed text
+     ${pkgs.xdotool}/bin/xdotool type "$TEXT "
      ${pkgs.libnotify}/bin/notify-send -t 2000 "Dictation" "Text inserted!"
      else
-       ${pkgs.libnotify}/bin/notify-send -t 2000 "Dictation" "No speech detected. Check /tmp/whisper.log"
-         fi
+     ${pkgs.libnotify}/bin/notify-send -t 2000 "Dictation" "No speech detected. Check /tmp/whisper.log"
+     fi
      else
        ${pkgs.libnotify}/bin/notify-send -t 2000 "Dictation" "Recording... Press hotkey again to stop."
          ${pkgs.alsa-utils}/bin/arecord -f S16_LE -c 1 -r 16000 "$AUDIO_FILE" &
          echo $! > "$PID_FILE"
          fi
-'')
+         '')
 
 
     (pkgs.writeShellScriptBin "sys-update" ''
