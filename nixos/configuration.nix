@@ -113,8 +113,7 @@
       alsa-utils
       libnotify
       xdotool
-      ark
-      kdePackages.dolphin
+      kdePackages.ark
   ];
 
   fonts.packages = with pkgs; [
