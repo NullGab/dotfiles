@@ -113,6 +113,7 @@
       alsa-utils
       libnotify
       xdotool
+      ark
   ];
 
   fonts.packages = with pkgs; [
