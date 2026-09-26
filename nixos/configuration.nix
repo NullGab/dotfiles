@@ -113,6 +113,7 @@
       alsa-utils
       libnotify
       xdotool
+      unrar
       kdePackages.ark
   ];
 
