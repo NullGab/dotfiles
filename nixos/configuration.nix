@@ -114,6 +114,7 @@
       libnotify
       xdotool
       ark
+      kdePackages.dolphin
   ];
 
   fonts.packages = with pkgs; [
