@@ -114,8 +114,7 @@
       unrar
       kdePackages.ark
       prismlauncher
-      jdk25
-      maven
+      maven 
   ];
 
   fonts.packages = with pkgs; [
@@ -138,12 +137,17 @@
     zsh.enable = true;
     firefox.enable = true;
     nix-ld.enable = true; # Run pre-compiled LSP binaries
+    
 
       steam = {
         enable = true;
         remotePlay.openFirewall = true; 
         dedicatedServer.openFirewall = true; 
       };
+  };
+  programs.java = {
+    enable = true;
+    package = pkgs.jdk25;
   };
 
   services.flatpak = {
