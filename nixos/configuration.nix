@@ -114,6 +114,8 @@
       unrar
       kdePackages.ark
       prismlauncher
+      jdk
+      maven
   ];
 
   fonts.packages = with pkgs; [
