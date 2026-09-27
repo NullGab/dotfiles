@@ -15,7 +15,6 @@
     curl
     discord
     xclip
-    jre
     ytmdesktop
     (writeShellScriptBin "dictate" ''
      PID_FILE="/tmp/dictation.pid"
