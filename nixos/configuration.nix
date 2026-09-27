@@ -30,16 +30,14 @@
   };
 
 # =========================================
-# Desktop Environment & Display (X11)
+# Desktop Environment & Display (Wayland/COSMIC)
 # =========================================
+  services.desktopManager.cosmic.enable = true;
+  services.displayManager.cosmic-greeter.enable = true;
+
   services.xserver = {
-    enable = true;
-    desktopManager.cinnamon.enable = true;
+    enable = true; 
     videoDrivers = [ "amdgpu" ];
-    displayManager.lightdm = {
-      enable = true;
-      background = ./yotsubato.jpeg; 
-    };
     xkb = {
       layout = "br,us";
       options = "grp:alt_shift_toggle";    
