@@ -113,6 +113,7 @@
       xdotool
       unrar
       kdePackages.ark
+      prismlauncher
   ];
 
   fonts.packages = with pkgs; [
