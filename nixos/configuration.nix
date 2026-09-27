@@ -114,7 +114,7 @@
       unrar
       kdePackages.ark
       prismlauncher
-      jdk
+      openjdk
       maven
   ];
 
