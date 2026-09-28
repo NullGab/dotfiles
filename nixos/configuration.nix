@@ -14,7 +14,6 @@
   boot.kernelModules = [ "uinput" ];
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
   system.stateVersion = "26.05";
-
 # =========================================
 # Networking, Time & Locale
 # =========================================
@@ -43,6 +42,8 @@
       options = "grp:alt_shift_toggle";    
     };
   };
+
+  environment.localBinInPath = true;
 
 # =========================================
 # Hardware & Peripherals
