@@ -116,6 +116,8 @@
       kdePackages.ark
       prismlauncher
       maven 
+      proton-vpn 
+      wireguard-tools
   ];
 
   fonts.packages = with pkgs; [
