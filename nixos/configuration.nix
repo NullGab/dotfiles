@@ -120,6 +120,7 @@
       wireguard-tools
       zoxide
       tree
+      kdePackages.kdenlive
   ];
 
   fonts.packages = with pkgs; [
