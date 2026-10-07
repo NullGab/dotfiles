@@ -118,6 +118,8 @@
       maven 
       proton-vpn 
       wireguard-tools
+      zoxide
+      tree
   ];
 
   fonts.packages = with pkgs; [
