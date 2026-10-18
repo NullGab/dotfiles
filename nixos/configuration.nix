@@ -21,8 +21,7 @@
   networking.networkmanager.enable = true;
   networking.networkmanager.wifi.powersave = false;
   networking.enableIPv6 = false;
-  networking.nameservers = [ "1.1.1.1" "1.0.0.1" ];
-  services.cloudflare-warp.enable = true;
+  networking.nameservers = [ "8.8.8.8" "8.8.4.4" ];
   time.timeZone = "America/Sao_Paulo";
   i18n.defaultLocale = "en_US.UTF-8";
 
