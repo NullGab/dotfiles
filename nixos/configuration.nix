@@ -20,6 +20,8 @@
   networking.hostName = "nixos";
   networking.networkmanager.enable = true;
   networking.networkmanager.wifi.powersave = false;
+  networking.enableIPv6 = false;
+  networking.nameservers = [ "1.1.1.1" "1.0.0.1" ];
   time.timeZone = "America/Sao_Paulo";
   i18n.defaultLocale = "en_US.UTF-8";
 
