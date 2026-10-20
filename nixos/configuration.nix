@@ -134,6 +134,12 @@
 # =========================================
 # Programs & Services Configs
 # =========================================
+  nix.gc = {
+    automatic = true;
+    dates = "weekly";
+    options = "--delete-older-than 14d";
+  };
+nix.optimise.automatic = true;
   services.postgresql = {
     enable = true;
   };
